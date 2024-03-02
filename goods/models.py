@@ -5,6 +5,7 @@ class Categories(models.Model):
     name = models.CharField(max_length=150, unique=True, verbose_name='Назва')
     slug = models.SlugField(max_length=200, unique=True, blank=True, null=True, verbose_name='URL')
     is_visible = models.BooleanField(default=True)
+
     class Meta:
         db_table = 'category'
         verbose_name = 'Категорію'
@@ -32,3 +33,12 @@ class Products(models.Model):
 
     def __str__(self):
         return f'{self.name} Кількість - {self.quantity}'
+
+    def display_id(self):
+        return f'{self.id:05}'
+
+    def sell_price(self):
+        if self.discount:
+            return round(self.price - self.price * self.discount/100, 2)
+
+        return self.price
