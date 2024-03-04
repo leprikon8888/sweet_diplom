@@ -12,7 +12,7 @@ def q_search(query):
     vector = SearchVector("name", "description")
     query = SearchQuery(query)
 
-       return Products.objects.annotate(rank=SearchRank(vector, query)).order_by("-rank")
+    return Products.objects.annotate(rank=SearchRank(vector, query)).order_by("-rank")
 
     # keywords = [word for word in query.split() if len(word) > 2]
     #
