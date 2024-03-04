@@ -1,7 +1,17 @@
+/*footer {*/
+/*    position: fixed;*/
+/*    bottom: 0;*/
+/*    width: 100%;*/
+/*    background-color: #343a40;*/
+/*    padding: 10px 0;*/
+/*  }*/
+
+
 footer {
     position: fixed;
     bottom: 0;
     width: 100%;
     background-color: #343a40;
     padding: 10px 0;
-  }
+    z-index: 9999; /* Устанавливаем z-index для футера, чтобы он отображался поверх других элементов */
+}
