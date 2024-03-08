@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Categories(models.Model):
@@ -22,7 +23,7 @@ class Products(models.Model):
     description = models.TextField(blank=True, null=True, verbose_name='Опис')
     image = models.ImageField(upload_to='goods_images', blank=True, null=True, verbose_name="Зображення")
     price = models.DecimalField(default=0.00, max_digits=7, decimal_places=2, verbose_name="Ціна")
-    discount = models.DecimalField(default=0.00, max_digits=4, decimal_places=2, verbose_name="Знижка")
+    discount = models.DecimalField(default=0.00, max_digits=4, decimal_places=2, verbose_name="Знижка в %")
     quantity = models.PositiveIntegerField(default=0, verbose_name='Кількість')
     category = models.ForeignKey(to=Categories, on_delete=models.CASCADE, verbose_name='Категорія')
 
@@ -34,6 +35,9 @@ class Products(models.Model):
 
     def __str__(self):
         return f'{self.name} Кількість - {self.quantity}'
+
+    def get_absolute_url(self):
+        return reverse('catalog:product', kwargs={'product_slug': self.slug})
 
     def display_id(self):
         return f'{self.id:05}'
