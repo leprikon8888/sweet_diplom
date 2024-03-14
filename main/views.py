@@ -23,3 +23,23 @@ def about(request):
 
     }
     return render(request, 'main/about.html', context)
+
+
+def contacts(request):
+    context = {
+        'title': 'Home - Контакти',
+        'content': 'Контакти',
+        'text_on_page': 'Текст про то, що наша білизна найкраща'
+
+    }
+    return render(request, 'main/contacts.html', context)
+
+
+def shipping(request):
+    context = {
+        'title': 'Home - Доставка',
+        'content': 'Доставка',
+        'text_on_page': 'Текст про то, що наша білизна найкраща'
+
+    }
+    return render(request, 'main/shipping.html', context)

@@ -26,7 +26,7 @@
                                 {% if request.GET.on_sale == 'on' %}checked{% endif %} >
                         {% if request.GET.q %}
                             <input type="hidden" name="q" value="{{ request.GET.q }}">
-                        {% endif %} 
+                        {% endif %}
                         <label class="form-check-label" for="flexCheckDefault">
                             Акціонні товари
                         </label>
@@ -60,6 +60,9 @@
             {% endif %}
 
             {% for product in goods %}
+                {% if product %}
+
+                {% endif %}
                 <!-- Карта товара -->
                 <div class="col-lg-4 col-md-6 p-4">
                 <div class="card border-primary rounded custom-shadow">
@@ -67,7 +70,7 @@
                         <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
                     {% else %}
                         <img src="{% static 'deps/images/Not found image.png' %}" class="card-img-top" alt="...">
-                    {% endif %} 
+                    {% endif %}
                     <div class="card-body">
                         <a href="{% url 'catalog:product' product.slug %}">
                             <p class="card-title">
@@ -139,12 +142,12 @@
             </ul>
         </nav>
     </div>
-        {% endif %} 
+        {% endif %}
 
 {% endblock %}
 
 {% block footer %}
-     <footer class="py-4 bg-dark">
+     <footer class="py-4 bg-dark fixed-bottom">
         <div class="container">
             <p class="m-0 text-center text-white">Copyright &copy; So Sweet Studio 2024</p>
         </div>
