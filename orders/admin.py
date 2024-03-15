@@ -30,6 +30,7 @@ class OrderTabulareAdmin(admin.TabularInline):
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = ("id", "user", "requires_delivery", "status", "payment_on_get", "is_paid", "created_timestamp")
+    list_editable = ( "status", "payment_on_get", "is_paid")
     search_fields = ("id",)
     readonly_fields = ("created_timestamp",)
     list_filter = ("requires_delivery", "status", "payment_on_get", "is_paid")
