@@ -12,11 +12,19 @@ def catalog(request, category_slug=None):
 
     if category_slug == 'all':
         goods = Products.objects.all()
-    elif query:
+    elif query and query.strip():  # Проверяем, что строка запроса не пуста
         goods = q_search(query)
-    else:
+        if goods is None:
+            context = {
+                'title': 'Home - Каталог',
+                'message': 'Пошуковий запит відсутній'
+            }
+            return render(request, 'goods/catalog.html', context)
+    elif category_slug:  # Добавляем проверку на наличие category_slug
         category = get_object_or_404(Categories, slug=category_slug)
         goods = Products.objects.filter(category=category)
+    else:
+        goods = Products.objects.none()  # Если category_slug пуст, возвращаем пустой QuerySet
 
     if on_sale:
         goods = goods.filter(discount__gt=0)
@@ -30,9 +38,22 @@ def catalog(request, category_slug=None):
     context = {
         'title': 'Home - Каталог',
         'goods': current_page,
-        'slug_url': category_slug
+        'slug_url': category_slug,
+        'query': query  # Передаем строку запроса в контекст
     }
     return render(request, 'goods/catalog.html', context)
+
+
+def product(request, product_slug):
+    product = Products.objects.get(slug=product_slug)
+
+    context = {
+        'product': product
+    }
+
+    return render(request, 'goods/product.html', context=context)
+
+
 
 
 
@@ -71,13 +92,3 @@ def catalog(request, category_slug=None):
 #     }
 #     return render(request, 'goods/catalog.html', context)
 #
-#
-def product(request, product_slug):
-
-    product = Products.objects.get(slug=product_slug)
-
-    context = {
-        'product': product
-    }
-
-    return render(request, 'goods/product.html', context=context)

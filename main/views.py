@@ -5,8 +5,6 @@ from goods.models import Categories
 
 def index(request):
 
-
-
     context = {
         'title': 'Home - Головна',
         'content': 'Магазин білизни So Sweet Lingerie',

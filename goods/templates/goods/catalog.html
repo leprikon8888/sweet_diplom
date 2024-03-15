@@ -45,7 +45,7 @@
                     <div class="form-check text-white mx-3">
                         <input class="form-check-input" type="radio" name="order_by" id="flexRadioDefault3" value="-price"
                               {% if request.GET.order_by == '-price' %}checked{% endif %}>
-                        <label class="form-check-label" for="flexRadioDefault3">Від дорогих к дешевим</label>
+                        <label class="form-check-label" for="fle  xRadioDefault3">Від дорогих к дешевим</label>
                     </div>
                     <button type="submit" class="btn btn-primary mx-3 mt-3">Застосувати</button>
                 </form>
@@ -57,7 +57,10 @@
                     <link rel="stylesheet" href="{% static "deps/css/my_footer_css.css" %}">
                     <h2 class="mt-4">По запиту нічого не знайдено</h2>
                 {% endif %}
+            {% else %}
+                 <h3 class="mt-4">Пошуковий запит відсутній</h3>
             {% endif %}
+
 
             {% for product in goods %}
                 {% if product %}

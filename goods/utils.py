@@ -1,16 +1,17 @@
+import logging
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank, SearchHeadline
 from django.db.models import Q
-
 from goods.models import Products
 
 
 def q_search(query):
-
-    if query.isdigit() and len(query) <= 5:
+    if not query.strip():  # Если строка пустая или содержит только пробелы
+        return None  # Возвращаем None
+    elif query.isdigit() and len(query) <= 5:
         return Products.objects.filter(id=int(query))
 
     vector = SearchVector("name", "description")
-    query = SearchQuery(query)
+    query = SearchQuery(query, config='simple')
 
     result = Products.objects.annotate(
         rank=SearchRank(
@@ -31,7 +32,21 @@ def q_search(query):
             start_sel='<span style="background-color: yellow;">',
             stop_sel="</span>",
         ))
+
     return result
+
+
+    # keywords = [word for word in query.split() if len(word) > 2]
+    #
+    # q_objects = Q()
+    #
+    # for token in keywords:
+    #     q_objects |= Q(description__icontains=token)
+    #     q_objects |= Q(name__icontains=token)
+    #
+    # return Products.objects.filter(q_objects)
+
+
     # keywords = [word for word in query.split() if len(word) > 2]
     #
     # q_objects = Q()
