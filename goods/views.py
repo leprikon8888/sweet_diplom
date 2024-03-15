@@ -3,7 +3,6 @@ from django.shortcuts import render, get_object_or_404
 from goods.models import Categories, Products
 from goods.utils import q_search
 
-
 def catalog(request, category_slug=None):
     page = request.GET.get('page', 1)
     on_sale = request.GET.get('on_sale', None)
@@ -12,14 +11,8 @@ def catalog(request, category_slug=None):
 
     if category_slug == 'all':
         goods = Products.objects.all()
-    elif query and query.strip():  # Проверяем, что строка запроса не пуста
+    elif query is not None and query.strip():  # Проверяем, что параметр q присутствует и строка запроса не пуста
         goods = q_search(query)
-        if goods is None:
-            context = {
-                'title': 'Home - Каталог',
-                'message': 'Пошуковий запит відсутній'
-            }
-            return render(request, 'goods/catalog.html', context)
     elif category_slug:  # Добавляем проверку на наличие category_slug
         category = get_object_or_404(Categories, slug=category_slug)
         goods = Products.objects.filter(category=category)
@@ -39,7 +32,8 @@ def catalog(request, category_slug=None):
         'title': 'Home - Каталог',
         'goods': current_page,
         'slug_url': category_slug,
-        'query': query  # Передаем строку запроса в контекст
+        'query': query,  # Передаем строку запроса в контекст
+        'is_search': query is not None  # Добавляем флаг, указывающий, был ли выполнен поиск
     }
     return render(request, 'goods/catalog.html', context)
 
@@ -52,7 +46,6 @@ def product(request, product_slug):
     }
 
     return render(request, 'goods/product.html', context=context)
-
 
 
 

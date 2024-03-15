@@ -6,7 +6,7 @@ from goods.models import Products
 
 def q_search(query):
     if not query.strip():  # Если строка пустая или содержит только пробелы
-        return None  # Возвращаем None
+        return Products.objects.none()  # Возвращаем пустой QuerySet
     elif query.isdigit() and len(query) <= 5:
         return Products.objects.filter(id=int(query))
 

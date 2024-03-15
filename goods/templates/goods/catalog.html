@@ -57,7 +57,7 @@
                     <link rel="stylesheet" href="{% static "deps/css/my_footer_css.css" %}">
                     <h2 class="mt-4">По запиту нічого не знайдено</h2>
                 {% endif %}
-            {% else %}
+            {% elif request.GET.q is not None and not request.GET.q.strip %}
                  <h3 class="mt-4">Пошуковий запит відсутній</h3>
             {% endif %}
 
