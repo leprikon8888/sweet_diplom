@@ -10,11 +10,13 @@
 {% endblock %}
 
 {% block cont %}
-    <div class="mt-5 pt-5 bg-white custom-shadow rounded">
-        <h2 class="m-2"><strong>{{ content }}</strong></h2>
-        <p class="m-2">{{ text_on_page }}</p>
+   <div class="mt-5 pt-5 bg-white custom-shadow rounded" style="padding: 20px;">
+        <h2 class="m-2" style="margin-bottom: 30px; text-align: center;"><strong>{{ content }}</strong></h2>
+        <p class="m-2" style="margin-top: 30px; text-indent: 30px;">{{ text_on_page|safe }}</p>
     </div>
 {% endblock %}
+
+
 
 {% block footer %}
      <footer class="py-4 bg-dark fixed-bottom">

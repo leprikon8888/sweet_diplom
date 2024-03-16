@@ -1,6 +1,9 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.utils.safestring import mark_safe
+
 from goods.models import Categories
+from main.models import PageContent
 
 
 def index(request):
@@ -14,30 +17,34 @@ def index(request):
 
 
 def about(request):
+    page_content = PageContent.objects.get(page_name='about')
+    text_on_page = mark_safe(page_content.text_on_page)  # Mark the text as safe
     context = {
-        'title': 'Home - Про нас',
-        'content': 'Про нас',
-        'text_on_page': 'Текст про то, що наша білизна найкраща'
-
+        'title': page_content.title,
+        'content': page_content.content,
+        'text_on_page': text_on_page
     }
     return render(request, 'main/about.html', context)
 
 
-def contacts(request):
-    context = {
-        'title': 'Home - Контакти',
-        'content': 'Контакти',
-        'text_on_page': 'Текст про то, що наша білизна найкраща'
 
+def contacts(request):
+    page_content = PageContent.objects.get(page_name='contacts')
+    text_on_page = mark_safe(page_content.text_on_page)  # Mark the text as safe
+    context = {
+        'title': page_content.title,
+        'content': page_content.content,
+        'text_on_page': text_on_page
     }
     return render(request, 'main/contacts.html', context)
 
 
 def shipping(request):
+    page_content = PageContent.objects.get(page_name='shipping')
+    text_on_page = mark_safe(page_content.text_on_page)  # Mark the text as safe
     context = {
-        'title': 'Home - Доставка',
-        'content': 'Доставка',
-        'text_on_page': 'Текст про то, що наша білизна найкраща'
-
+        'title': page_content.title,
+        'content': page_content.content,
+        'text_on_page': text_on_page
     }
     return render(request, 'main/shipping.html', context)
