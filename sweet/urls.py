@@ -29,6 +29,7 @@ urlpatterns = [
     path('cart/', include('carts.urls', namespace='cart')),
     path('orders/', include('orders.urls', namespace='orders')),
     path('accounts/', include('allauth.urls')),
+    path('ckeditor5/', include('django_ckeditor_5.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += [
