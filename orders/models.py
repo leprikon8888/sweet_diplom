@@ -47,7 +47,7 @@ class OrderItem(models.Model):
     class Meta:
         db_table = "order_item"
         verbose_name = "Проданий товар"
-        verbose_name_plural = "Продани товари"
+        verbose_name_plural = "Продані товари"
 
     objects = OrderitemQueryset.as_manager()
 

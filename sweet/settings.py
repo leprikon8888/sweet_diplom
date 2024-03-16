@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 import logging
 
@@ -67,6 +67,7 @@ MIDDLEWARE = [
 
     "debug_toolbar.middleware.DebugToolbarMiddleware",
     'allauth.account.middleware.AccountMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'sweet.urls'
@@ -124,8 +125,17 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
+LANGUAGES = [
+    ('uk', 'Українська'),
+    # Добавьте сюда другие языки, если они вам нужны
+]
 
-LANGUAGE_CODE = 'ru'
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
+
+
+LANGUAGE_CODE = 'uk'
 
 TIME_ZONE = 'UTC'
 
