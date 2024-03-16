@@ -39,6 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     'django.contrib.sites',
 
+    'main',
+    'goods',
+    'users',
+    'carts',
+    'orders',
+    'ckeditor',
 
     'allauth',
     'allauth.account',
@@ -47,12 +53,7 @@ INSTALLED_APPS = [
 
     'debug_toolbar',
 
-    'main',
-    'goods',
-    'users',
-    'carts',
-    'orders',
-    'ckeditor',
+
 ]
 
 MIDDLEWARE = [
@@ -170,8 +171,9 @@ SITE_ID = 1
 
 SOCIALACCOUNT_PROVIDERS = {
     'github': {
-        'SCOPE': [
-            'user',
-        ],
+        'SCOPE': ['user'],
+        'LOGIN_REDIRECT_URL': '/accounts/github/login/',
+        'LOGIN_URL': 'github_login',
     }
 }
+
