@@ -1,8 +1,5 @@
-from django.http import HttpResponse
 from django.shortcuts import render
 from django.utils.safestring import mark_safe
-
-from goods.models import Categories
 from main.models import PageContent
 
 
@@ -25,7 +22,6 @@ def about(request):
         'text_on_page': text_on_page
     }
     return render(request, 'main/about.html', context)
-
 
 
 def contacts(request):
