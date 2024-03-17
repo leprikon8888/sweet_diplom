@@ -18,24 +18,18 @@ class UserLoginForm(AuthenticationForm):
 
 
 class UserRegistrationForm(UserCreationForm):
+    email = forms.EmailField(required=True)
 
     class Meta:
         model = User
-        fields = (
-            'first_name',
-            'last_name',
-            'username',
-            'email',
-            'password1',
-            'password2'
-        )
+        fields = ('username', 'email', 'password1', 'password2')
 
-    first_name = forms.CharField()
-    last_name = forms.CharField()
-    username = forms.CharField()
-    email = forms.CharField()
-    password1 = forms.CharField()
-    password2 = forms.CharField()
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.email = self.cleaned_data['email']
+        if commit:
+            user.save()
+        return user
 
 
 class ProfileForm(UserChangeForm):
