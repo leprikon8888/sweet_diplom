@@ -26,4 +26,3 @@ class ViewsTestCase(TestCase):
         self.assertContains(response, self.page_content.content)
         self.assertContains(response, self.page_content.text_on_page)
 
-    # Добавьте тесты для contacts и shipping представлений аналогично

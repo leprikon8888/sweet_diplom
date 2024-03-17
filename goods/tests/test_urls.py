@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.urls import reverse, resolve
 from goods.views import catalog, product
 
+
 class URLsTestCase(TestCase):
     def test_catalog_url(self):
         url = reverse('goods:catalog', args=['books'])

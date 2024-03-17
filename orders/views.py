@@ -4,13 +4,18 @@ from django.db import transaction
 from django.forms import ValidationError
 from django.shortcuts import redirect, render
 from carts.models import Cart
-
 from orders.forms import CreateOrderForm
 from orders.models import Order, OrderItem
 
 
 @login_required
 def create_order(request):
+    """
+    A view function that handles the creation of an order.
+    If the request method is POST, it processes the form data, creates an order,
+    adds order items, updates product quantities, clears the user's cart,
+    and displays success messages before redirecting to the user's profile page.
+    """
     if request.method == 'POST':
         form = CreateOrderForm(data=request.POST)
         if form.is_valid():

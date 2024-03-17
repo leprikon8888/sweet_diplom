@@ -12,6 +12,7 @@ def dummy_get_response(request):
 
 User = get_user_model()
 
+
 class CartUtilsTestCase(TestCase):
     def setUp(self):
         self.factory = RequestFactory()

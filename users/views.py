@@ -4,13 +4,14 @@ from django.db.models import Prefetch
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
-
 from carts.models import Cart
 from orders.models import Order, OrderItem
 from users.forms import UserLoginForm, UserRegistrationForm, ProfileForm
 
 
 def login(request):
+    """ A function to handle user login. It takes a request object as a parameter and performs
+    authentication and form validation. """
     if request.method == 'POST':
         form = UserLoginForm(data=request.POST)
         if form.is_valid():
@@ -42,6 +43,7 @@ def login(request):
 
 
 def registration(request):
+    """A function that handles user registration"""
     if request.method == 'POST':
         form = UserRegistrationForm(data=request.POST)
         if form.is_valid():
@@ -67,6 +69,8 @@ def registration(request):
 
 @login_required
 def profile(request):
+    """A view function to handle the user profile, allowing them to update their profile information
+    and displaying their order history."""
     if request.method == 'POST':
         form = ProfileForm(data=request.POST, instance=request.user, files=request.FILES)
         if form.is_valid():
@@ -95,11 +99,13 @@ def profile(request):
 
 
 def users_cart(request):
+    """A view function to display the user's cart"""
     return render(request, 'users/users_cart.html')
 
 
 @login_required
 def logout(request):
+    """A view function to logout the user"""
     messages.success(request, f'{request.user.username} Ви вийшли із облікового запису')
     auth.logout(request)
     return redirect(reverse('main:index'))

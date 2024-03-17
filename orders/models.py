@@ -6,10 +6,12 @@ from users.models import User
 
 class OrderitemQueryset(models.QuerySet):
 
-    def total_price(self):
+    def total_price(self) -> int:
+        """Method for getting total price of order"""
         return sum(cart.products_price() for cart in self)
 
-    def total_quantity(self):
+    def total_quantity(self) -> int:
+        """Method for getting total quantity of order"""
         if self:
             return sum(cart.quantity for cart in self)
         return 0
@@ -31,7 +33,8 @@ class Order(models.Model):
         verbose_name = "Замовлення"
         verbose_name_plural = "Замовлення"
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """Method for getting string representation of order"""
         return f"Замовлення № {self.pk} | Покупець {self.user.first_name} {self.user.last_name}"
 
 
@@ -51,8 +54,10 @@ class OrderItem(models.Model):
 
     objects = OrderitemQueryset.as_manager()
 
-    def products_price(self):
+    def products_price(self) -> float:
+        """Method for getting products price"""
         return round(self.product.sell_price() * self.quantity, 2)
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """Method for getting string representation of order item"""
         return f"Товар {self.name} | Замовлення № {self.order.pk}"

@@ -9,4 +9,5 @@ class PageContent(models.Model):
     text_on_page = CKEditor5Field('Text', config_name='extends', blank=True, null=True)
 
     def __str__(self):
+        """Return a string representation of the object"""
         return self.page_name

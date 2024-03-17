@@ -1,16 +1,12 @@
 from django.http import JsonResponse
-from django.shortcuts import redirect
 from django.template.loader import render_to_string
-
 from carts.models import Cart
 from carts.utils import get_user_carts
 from goods.models import Products
 
 
 def cart_add(request):
-
     """A function to add a product to the shopping cart for a user, either authenticated or using a session"""
-
     product_id = request.POST.get('product_id')
     product = Products.objects.get(id=product_id)
 

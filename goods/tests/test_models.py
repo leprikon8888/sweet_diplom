@@ -1,8 +1,8 @@
 from decimal import Decimal
 from django.test import TestCase
 from django.urls import reverse
-
 from goods.models import Categories, Products
+
 
 class CategoryModelTests(TestCase):
     def setUp(self):
@@ -11,6 +11,7 @@ class CategoryModelTests(TestCase):
     def test_category_string_representation(self):
         category = Categories.objects.create(name='Books')
         self.assertEqual(str(category), 'Books')
+
 
 class ProductModelTests(TestCase):
     def setUp(self):
