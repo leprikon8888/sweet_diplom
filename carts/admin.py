@@ -18,10 +18,20 @@ class CartAdmin(admin.ModelAdmin):
     list_filter = ['created_timestamp', 'user', 'product__name',]
 
     def user_display(self, obj):
+        """A function that displays the user information.
+        Parameters:
+            obj: The object to display user information from.
+        Returns:
+            A string representing the user information or 'Анонімний користувач' if no user is present."""
         if obj.user:
             return str(obj.user)
         return 'Анонімний користувач'
 
     def product_display(self, obj):
+        """Retrieves the name of the product associated with the given object.
+        Parameters:
+            obj (object): The object for which to retrieve the product name.
+        Returns:
+            str: The name of the product associated with the given object."""
         return str(obj.product.name)
 

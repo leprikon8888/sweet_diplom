@@ -1,3 +1,5 @@
+from _decimal import Decimal, ROUND_HALF_UP
+
 from django.db import models
 from django.urls import reverse
 
@@ -12,11 +14,13 @@ class Categories(models.Model):
         verbose_name = 'Категорію'
         verbose_name_plural = 'Категорії'
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """Return a string representation of the object"""
         return self.name
 
 
 class Products(models.Model):
+    """The Products model represents a product in the database"""
     name = models.CharField(max_length=150, unique=True, verbose_name='Назва')
     slug = models.SlugField(max_length=200, unique=True, blank=True, null=True, verbose_name='URL')
     is_visible = models.BooleanField(default=True)
@@ -33,17 +37,22 @@ class Products(models.Model):
         verbose_name_plural = 'Продукти'
         ordering = ('id',)
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """ Return a string representation of the object"""
         return f'{self.name} Кількість - {self.quantity}'
 
-    def get_absolute_url(self):
-        return reverse('catalog:product', kwargs={'product_slug': self.slug})
+    def get_absolute_url(self) -> str:
+        """A method that generates the absolute URL for the product using the product's slug.
+        Returns a string representing the absolute URL of the product."""
+        return reverse('goods:product', kwargs={'product_slug': self.slug})
 
-    def display_id(self):
+    def display_id(self) -> str:
+        """Return a string representation of the object"""
         return f'{self.id:05}'
 
-    def sell_price(self):
+    def sell_price(self) -> Decimal:
+        """Calculate the selling price of the product"""
         if self.discount:
-            return round(self.price - self.price * self.discount / 100, 2)
+            return Decimal(str(self.price - self.price * self.discount / 100)).quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
 
-        return self.price
+        return Decimal(str(self.price))
