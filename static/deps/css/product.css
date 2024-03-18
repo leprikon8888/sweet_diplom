@@ -1,7 +1,58 @@
-
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
     background-color: rgba(0, 0, 0, 0.5); /* Фон стрелочек */
     border-radius: 50%; /* Скругление стрелочек */
     padding: 10px; /* Внутренние отступы стрелочек */
+}
+
+.card-body {
+    height: 100%;
+}
+
+.product-name {
+    font-size: 2rem; /* Увеличение размера шрифта вдвое */
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.carousel-container {
+    width: 100%; /* Добавлено свойство width: 100% */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh; /* Изменено на 40vh */
+}
+
+.carousel-inner,
+.carousel-item {
+    height: 100%; /* Добавлено для корректного масштабирования изображений */
+}
+
+.carousel-item img {
+    object-fit: contain; /* Добавлено для сохранения пропорций изображения */
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.modal-body {
+    position: relative;
+    height: 80vh; /* Устанавливаем высоту модального окна на 80% от высоты окна */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-body img {
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

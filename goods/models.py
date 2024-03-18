@@ -8,6 +8,7 @@ class Categories(models.Model):
     name = models.CharField(max_length=150, unique=True, verbose_name='Назва')
     slug = models.SlugField(max_length=200, unique=True, blank=True, null=True, verbose_name='URL')
     is_visible = models.BooleanField(default=True)
+    position = models.PositiveSmallIntegerField(default=0, unique=True)
 
     class Meta:
         db_table = 'category'

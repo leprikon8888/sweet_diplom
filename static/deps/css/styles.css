@@ -1,0 +1,26 @@
+/* styles.css */
+.card-img-top {
+    height: 400px; /* Установите желаемую высоту изображений */
+    object-fit: cover; /* Это свойство обеспечит масштабирование изображения без искажений */
+}
+
+.card-title a {
+    font-weight: bold; /* Жирный шрифт */
+    font-size: 1.2rem; /* Увеличенный размер шрифта */
+    text-align: center; /* Выравнивание по центру */
+    display: block; /* Превращает ссылку в блочный элемент */
+    margin: 0.5rem 0; /* Небольшой отступ сверху и снизу */
+}
+
+.product-link {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #1c00cf;
+    text-decoration: none;
+    cursor: pointer; /* Добавляем курсор-указатель */
+}
+
+.product-link:hover {
+    color: #666;
+    text-decoration: underline; /* Добавляем подчеркивание при наведении */
+}

@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block cont %}
+     <link rel="stylesheet" href="{% static 'deps/css/styles.css' %}">
      <div class="col-lg-10">
 
         <!-- Контент на странице -->
@@ -77,8 +78,8 @@
                             <div class="card border-primary rounded custom-shadow">
                                 <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" data-bs-toggle="modal" data-bs-target="#imageModal{{ forloop.counter }}">
                                 <div class="card-body">
-                                    <a href="{% url 'catalog:product' product.slug %}">
-                                        <p class="card-title">
+                                    <div class="text-center mb-3">
+                                        <a href="{% url 'catalog:product' product.slug %}" class="product-link">
                                             {% autoescape off %}
                                             {% if product.headline %}
                                             {{ product.headline }}
@@ -86,8 +87,8 @@
                                             {{ product.name }}
                                             {% endif %}
                                             {% endautoescape %}
-                                        </p>
-                                    </a>
+                                        </a>
+                                    </div>
                                     <p class="card-text">
                                         {% autoescape off %}
                                         {% if product.bodyline %}
@@ -183,7 +184,7 @@
                     {% for page in goods.paginator.page_range %}
                         {% if page >= goods.number|add:-2  and page <= goods.number|add:2 %}
                              <li class="page-item {% if goods.number == page %} active {% endif %} ">
-                                 <a class="page-link" href="?{% change_params page=page %}">{{ page }}</a>\
+                                 <a class="page-link" href="?{% change_params page=page %}">{{ page }}</a>
                              </li>
                         {% endif %}
                     {% endfor %}
