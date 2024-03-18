@@ -9,23 +9,17 @@ class CategoriesAdmin(admin.ModelAdmin):
 
 
 @admin.register(Products)
-class ProductsAdmin(admin.ModelAdmin):
-    prepopulated_fields = {
-        'slug': ('name',)
-    }
-    list_display = [
-        'name', 'quantity', 'price', 'discount'
-    ]
-    list_editable = [
-        'discount',
-    ]
-    search_fields = [
-        'name', 'description'
-    ]
-    list_filter = [
-        'quantity', 'discount', 'category'
-    ]
-    fields = [
-        'name', 'category', 'slug', 'description', 'image', (
-            'price', 'discount'), 'quantity',
-    ]
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ('name', 'category', 'price', 'quantity', 'display_id')
+    list_filter = ('category',)
+    search_fields = ('name', 'description')
+    readonly_fields = ('display_id',)
+    prepopulated_fields = {'slug': ('name',)}
+    fieldsets = (
+        (None, {
+            'fields': ('name', 'slug', 'is_visible', 'description', 'category', 'price', 'discount', 'quantity')
+        }),
+        ('Изображения', {
+            'fields': ('image', 'image2', 'image3', 'image4', 'image5')
+        }),
+    )

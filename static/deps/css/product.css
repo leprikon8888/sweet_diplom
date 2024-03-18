@@ -1,0 +1,7 @@
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5); /* Фон стрелочек */
+    border-radius: 50%; /* Скругление стрелочек */
+    padding: 10px; /* Внутренние отступы стрелочек */
+}

@@ -6,47 +6,68 @@
 {% endblock %}
 
 {% block cont %}
-     <div class="container mt-5">
-                        <div class="card mb-4 custom-shadow">
-                            <div class="row">
-                                <!-- Миниатюры -->
-                                <div class="col-md-4">
-                                    <img src="{{ product.image.url }}"
-                                        class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#imageModal1">
+<link rel="stylesheet" href="{% static 'deps/css/product.css' %}">
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card mb-4 custom-shadow">
+                <div class="row g-0">
+                    <!-- Миниатюры -->
+                    <div class="col-md-6">
+                        <div id="carouselImages" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
+                            <div class="carousel-inner">
+                                {% if product.image %}
+                                <div class="carousel-item active">
+                                    <img src="{{ product.image.url }}" class="d-block w-100" alt="Зображення 1">
                                 </div>
-                                <div class="col-md-4 ">
-                                    <p class="product_id mt-3">id: {{ product.display_id }}</p>
+                                {% endif %}
+                                {% if product.image2 %}
+                                <div class="carousel-item">
+                                    <img src="{{ product.image2.url }}" class="d-block w-100" alt="Зображення 2">
                                 </div>
-                                <!-- Увеличить изображение в модальном окне -->
-                                <div class="modal fade" id="imageModal1" tabindex="-1"
-                                    aria-labelledby="imageModal1Label" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="imageModal1Label">{{ product.name }}</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Закрыть"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <img src="{{ product.image.url }}"
-                                                    class="img-fluid" alt="Зображення 1">
-                                            </div>
-                                        </div>
-                                    </div>
+                                {% endif %}
+                                {% if product.image3 %}
+                                <div class="carousel-item">
+                                    <img src="{{ product.image3.url }}" class="d-block w-100" alt="Зображення 3">
                                 </div>
+                                {% endif %}
+                                {% if product.image4 %}
+                                <div class="carousel-item">
+                                    <img src="{{ product.image4.url }}" class="d-block w-100" alt="Зображення 4">
+                                </div>
+                                {% endif %}
+                                {% if product.image5 %}
+                                <div class="carousel-item">
+                                    <img src="{{ product.image5.url }}" class="d-block w-100" alt="Зображення 5">
+                                </div>
+                                {% endif %}
                             </div>
-                            <!-- Описание товара -->
-                            <div class="card-body">
-                                <p class="card-text">Ціна: <strong>{{ product.sell_price }} ₴</strong></p>
-                                <h5 class="card-title">{{ product.name }}</h5>
-                                <p class="card-text">{{ product.description }}</p>
-                                <a href="{% url 'carts:cart_add' %}" class="btn btn-dark add-to-cart"
-                                data-product-id='{{ product.id }}'>
-                                    {% csrf_token %}
-                                    Додати у кошик
-                                </a>
-                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselImages" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Предыдущее</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselImages" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Следующее</span>
+                            </button>
                         </div>
                     </div>
+                    <!-- Описание товара -->
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <p class="product_id">id: {{ product.display_id }}</p>
+                            <p class="card-text">Ціна: <strong>{{ product.sell_price }} ₴</strong></p>
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">{{ product.description }}</p>
+                            <a href="{% url 'carts:cart_add' %}" class="btn btn-dark add-to-cart" data-product-id='{{ product.id }}'>
+                                {% csrf_token %}
+                                Додати у кошик
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
-
