@@ -3,23 +3,24 @@ from pathlib import Path
 import logging
 from django.conf import settings
 from .ckeditor_settings import CKEDITOR_5_CONFIGS
+from dotenv import load_dotenv
+from django.core.management.utils import get_random_secret_key
+import dj_database_url
 
+load_dotenv()
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
+SECRET_KEY = os.environ.get('SECRET_KEY', get_random_secret_key())
+DEBUG = os.environ.get('DEBUG', 'False')
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS', '*')]
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@^4%8on-ou2_69c1@)6+o&ettibankh8fg9p*iartlygt7p&c*'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
-# Application definition
+DB_NAME = os.environ.get('DB_NAME')
+DB_USER = os.environ.get('DB_USER')
+DB_PASSWORD = os.environ.get('DB_PASSWORD')
+DB_HOST = os.environ.get('DB_HOST')
+DB_PORT = os.environ.get('DB_PORT')
+DATABASE_URL = os.environ.get('DATABASE_URL')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -36,7 +37,6 @@ INSTALLED_APPS = [
     'users',
     'carts',
     'orders',
-    # 'ckeditor',
     'django_ckeditor_5',
 
     'allauth',
@@ -45,19 +45,17 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.github',
 
     'debug_toolbar',
-
-
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
     "debug_toolbar.middleware.DebugToolbarMiddleware",
     'allauth.account.middleware.AccountMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -87,6 +85,7 @@ WSGI_APPLICATION = 'sweet.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -97,6 +96,10 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+db_config = dj_database_url.config(default=DATABASE_URL, conn_max_age=600, conn_health_checks=True)
+
+DATABASES['default'].update(db_config)
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -131,7 +134,7 @@ LOCALE_PATHS = [
 
 LANGUAGE_CODE = 'uk'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Kiev'
 
 USE_I18N = True
 
