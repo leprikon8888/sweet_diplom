@@ -76,6 +76,7 @@ def registration(request):
     return render(request, 'users/registration.html', context)
 
 
+
 @login_required
 def profile(request):
     """A view function to handle the user profile, allowing them to update their profile information
@@ -87,7 +88,13 @@ def profile(request):
             messages.success(request, 'профайл успішно оновлено')
             return HttpResponseRedirect(reverse('users:profile'))
     else:
-        form = ProfileForm(instance=request.user)
+        initial_data = {
+            'first_name': request.user.first_name,
+            'last_name': request.user.last_name,
+            'username': request.user.username,
+            'email': request.user.email,
+        }
+        form = ProfileForm(instance=request.user, initial=initial_data)
 
     orders = (
         Order.objects.filter(user=request.user)
