@@ -7,6 +7,8 @@ from django.urls import reverse
 from carts.models import Cart
 from orders.models import Order, OrderItem
 from users.forms import UserLoginForm, UserRegistrationForm, ProfileForm
+from django.contrib.auth import authenticate
+
 
 
 def login(request):
@@ -17,7 +19,11 @@ def login(request):
         if form.is_valid():
             username = request.POST['username']
             password = request.POST['password']
-            user = auth.authenticate(username=username, password=password)
+            user = auth.authenticate(
+                username=username,
+                password=password,
+                backend='django.contrib.auth.backends.ModelBackend'
+            )
 
             session_key = request.session.session_key
 
@@ -52,7 +58,10 @@ def registration(request):
             session_key = request.session.session_key
 
             user = form.instance
-            auth.login(request, user)
+            user = authenticate(username=user.username, password=form.cleaned_data['password1'],
+                                backend='django.contrib.auth.backends.ModelBackend')
+            if user is not None:
+                auth.login(request, user)
 
             if session_key:
                 Cart.objects.filter(session_key=session_key).update(user=user)
