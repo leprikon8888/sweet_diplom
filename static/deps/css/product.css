@@ -40,13 +40,13 @@
     max-height: 100%;
 }
 
-.modal-body {
-    position: relative;
-    height: 80vh; /* Устанавливаем высоту модального окна на 80% от высоты окна */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+/*.modal-body {*/
+/*    position: relative;*/
+/*    height: 80vh; !* Устанавливаем высоту модального окна на 80% от высоты окна *!*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*}*/
 
 .modal-body img {
     max-width: 100%;

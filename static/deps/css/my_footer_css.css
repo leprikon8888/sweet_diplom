@@ -44,3 +44,12 @@
 /*  color: white;*/
 /*  margin-top: auto;*/
 /*}*/
+/* my_footer_css.css */
+footer {
+    background-color: #ff69b4 !important;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: #fff; /* Цвет текста в футере */
+}

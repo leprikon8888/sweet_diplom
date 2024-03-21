@@ -82,8 +82,17 @@ body {
   flex: 1;
 }
 
-footer {
-  background-color: #343a40;
-  padding: 10px 0;
-  color: white;
+.my-button {
+    background-color: #ff6fa9; /* Ваш цвет */
+    color: #ffffff; /* Белый цвет текста */
+    border: none; /* Убираем границу, которую добавляет Bootstrap */
+    transition: background-color 0.3s ease; /* Анимация перехода */
+}
+
+.my-button:hover, .my-button:focus {
+    background-color: #ff3d85; /* Темнее при наведении или фокусе */
+}
+
+.my-button:active {
+    background-color: #ff1a70; /* Еще темнее при нажатии */
 }
