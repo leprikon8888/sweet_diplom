@@ -1,5 +1,6 @@
 {% load static %}
 {% load goods_tags %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,10 +27,10 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
             <div class="container">
-                <a class="navbar-brand" href="{% url 'main:index' %}">Home</a>
+                <a class="navbar-brand" href="{% url 'main:index' %}">{% trans "Home" %}</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+                    aria-expanded="false" aria-label="{% trans 'Toggle navigation' %}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -37,41 +38,41 @@
                         <li class="nav-item dropdown ">
                             <a class="nav-link dropdown-toggle text-white" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                Інформація
+                                {% trans "Інформація" %}
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item  text-white" href="{% url 'main:shipping' %}">Доставка і оплата</a></li>
-                                <li><a class="dropdown-item  text-white" href="{% url 'main:contacts' %}">Контактна інформація</a></li>
-                                <li><a class="dropdown-item  text-white" href="{% url 'main:about' %}">Про нас</a></li>
+                                <li><a class="dropdown-item  text-white" href="{% url 'main:shipping' %}">{% trans "Доставка і оплата" %}</a></li>
+                                <li><a class="dropdown-item  text-white" href="{% url 'main:contacts' %}">{% trans "Контактна інформація" %}</a></li>
+                                <li><a class="dropdown-item  text-white" href="{% url 'main:about' %}">{% trans "Про нас" %}</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link  text-white" href="{%  url 'user:users_cart' %}">Кошик</a>
+                            <a class="nav-link  text-white" href="{%  url 'user:users_cart' %}">{% trans "Кошик" %}</a>
                         </li>
                         {% if not user.is_authenticated %}
                             <li class="nav-item">
-                                <a class="nav-link  text-white" href="{% url 'user:login' %}">Увійти</a>
+                                <a class="nav-link  text-white" href="{% url 'user:login' %}">{% trans "Увійти" %}</a>
                             </li>
                         {% else %}
                             <li class="nav-item dropdown ">
                             <a class="nav-link dropdown-toggle text-white" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                Мій профіль
+                                {% trans "Мій профіль" %}
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item  text-white" href="{%  url 'user:users_cart' %}">Кошик</a></li>
-                                <li><a class="dropdown-item  text-white" href="{% url 'user:profile' %}">Особистий кабінет</a>
+                                <li><a class="dropdown-item  text-white" href="{%  url 'user:users_cart' %}">{% trans "Кошик" %}</a></li>
+                                <li><a class="dropdown-item  text-white" href="{% url 'user:profile' %}">{% trans "Особистий кабінет" %}</a>
                                 </li>
                                 {% if user.is_admin or user.is_staff %}
-                                    <li><a class="dropdown-item  text-white" href="{% url 'admin:index' %}">Адмін панель</a></li>
-                                {% endif %} 
+                                    <li><a class="dropdown-item  text-white" href="{% url 'admin:index' %}">{% trans "Адмін панель" %}</a></li>
+                                {% endif %}
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item  text-white" href="{%  url 'user:logout' %}">Вийти</a></li>
+                                <li><a class="dropdown-item  text-white" href="{%  url 'user:logout' %}">{% trans "Вийти" %}</a></li>
                             </ul>
                         </li>
-                        {% endif %} 
+                        {% endif %}
 
 
                     </ul>
@@ -79,9 +80,22 @@
 
 
                     <form class="d-flex" role="search" action="{% url 'catalog:search' %}" method='get'>
-                        <input class="form-control me-2" type="search" name='q' placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success text-white" type="submit">Пошук</button>
+                        <input class="form-control me-2" type="search" name='q' placeholder="{% trans 'Search' %}" aria-label="{% trans 'Search' %}">
+                        <button class="btn btn-outline-success text-white" type="submit">{% trans "Пошук" %}</button>
                     </form>
+                
+                    <div class="lang-switcher">
+                        {% get_current_language as CURRENT_LANGUAGE %}
+                        {% get_available_languages as AVAILABLE_LANGUAGES %}
+                        {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
+                        {% for language in languages %}
+                            {% if language.code == CURRENT_LANGUAGE %}
+                                <a class="lang-btn active" href="/{{ language.code }}/">{{ language.name_local }}</a>
+                            {% else %}
+                                <a class="lang-btn" href="/{{ language.code }}/">{{ language.name_local }}</a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </nav>
@@ -94,8 +108,8 @@
                 <div class="dropdown mb-2">
                     <button class="btn btn-secondary dropdown-toggle btn-dark" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        Каталог
-                        <img class="mx-1" src="{% static 'deps/icons/grid-fill.svg' %}" alt="Catalog Icon" width="16"
+                        {% trans "Каталог" %}
+                        <img class="mx-1" src="{% static 'deps/icons/grid-fill.svg' %}" alt="{% trans 'Catalog Icon' %}" width="16"
                              height="16">
                     </button>
                     <ul class="dropdown-menu bg-dark" data-bs-theme="dark">
@@ -107,7 +121,7 @@
                 </div>
                 <!-- Значек корзины, вызывает модальное окно -->
                 {% block modal_cart %}
-                
+
                 {% endblock %}
                 <!-- Закончилась разметка модального окна -->
             </div>
