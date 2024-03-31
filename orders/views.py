@@ -6,7 +6,8 @@ from django.shortcuts import redirect, render
 from carts.models import Cart
 from orders.forms import CreateOrderForm
 from orders.models import Order, OrderItem
-
+from orders.utils import send_order_to_telegram
+import asyncio
 
 @login_required
 def create_order(request):
@@ -17,7 +18,7 @@ def create_order(request):
     and displays success messages before redirecting to the user's profile page.
     """
     if request.method == 'POST':
-        form = CreateOrderForm(data=request.POST)
+        form = CreateOrderForm(request.POST)
         if form.is_valid():
             try:
                 with transaction.atomic():
@@ -32,6 +33,8 @@ def create_order(request):
                             requires_delivery=form.cleaned_data['requires_delivery'],
                             delivery_address=form.cleaned_data['delivery_address'],
                             payment_on_get=form.cleaned_data['payment_on_get'],
+                            first_name=form.cleaned_data['first_name'],  # Добавлено
+                            last_name=form.cleaned_data['last_name'],    # Добавлено
                         )
                         # Создать заказанные товары
                         for cart_item in cart_items:
@@ -54,19 +57,25 @@ def create_order(request):
                             product.quantity -= quantity
                             product.save()
 
+                        # Отправить информацию о заказе в Телеграм
+                        try:
+                            (send_order_to_telegram(order))
+                        except Exception as e:
+                            messages.error(request, f"Ошибка при отправке сообщения в Телеграм: {str(e)}")
+
                         # Очистить корзину пользователя после создания заказа
                         cart_items.delete()
 
                         messages.success(request, "Замовлення оформлено! Найближчим часом вами зв'яжеться наш менеджер")
                         return redirect('user:profile')
             except ValidationError as e:
-                messages.success(request, str(e))
+                messages.error(request, str(e))
                 return redirect('cart:order')
     else:
         initial = {
             'first_name': request.user.first_name,
             'last_name': request.user.last_name,
-            }
+        }
 
         form = CreateOrderForm(initial=initial)
 

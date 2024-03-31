@@ -96,3 +96,26 @@ body {
 .my-button:active {
     background-color: #ff1a70; /* Еще темнее при нажатии */
 }
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.lang-btn {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    background-color: #6c757d;
+    margin-right: 0.5rem;
+    transition: background-color 0.3s;
+}
+
+.lang-btn:hover {
+    background-color: #5c636a;
+}
+
+.lang-btn.active {
+    background-color: #198754;
+}
