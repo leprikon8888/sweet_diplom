@@ -6,6 +6,7 @@ from .ckeditor_settings import CKEDITOR_5_CONFIGS
 from dotenv import load_dotenv
 from django.core.management.utils import get_random_secret_key
 import dj_database_url
+from django.utils.translation import gettext_lazy as _
 
 load_dotenv()
 
@@ -136,6 +137,7 @@ LANGUAGE_CODE = 'uk'
 TIME_ZONE = 'Europe/Kiev'
 
 USE_I18N = True
+USE_I18N_USE_CACHE = False
 
 USE_TZ = True
 

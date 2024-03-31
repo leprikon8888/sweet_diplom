@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block modal_cart %}
 {% include 'includes/cart_button.html' %}
@@ -10,74 +11,74 @@
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-md-9 bg-white p-4 mb-5 mx-2 rounded custom-shadow">
-                    <h2 class="text-center mb-4">Реєстрація</h2>
+                    <h2 class="text-center mb-4">{% trans "Реєстрація" %}</h2>
                     <form action="{% url 'users:registration' %}" method="post">
                         {% csrf_token %}
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="id_first_name" class="form-label">Им'я*</label>
+                                <label for="id_first_name" class="form-label">{% trans "Им'я*" %}</label>
                                 <input type="text" class="form-control" id="id_first_name"
                                     value="{% if form.first_name.value %}{{ form.first_name.value }}{% endif %} "
                                     name="first_name"
-                                    placeholder="Введіть ваше им'я" required>
+                                    placeholder="{% trans "Введіть ваше им'я" %}" required>
                                     {% if form.first_name.errors %}
                                         <div class="alert-danger alert-dismissible fade show">{{ form.first_name.errors }}</div>
                                     {% endif %}
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="id_last_name" class="form-label">Прізвище*</label>
+                                <label for="id_last_name" class="form-label">{% trans "Прізвище*" %}</label>
                                 <input type="text" class="form-control" id="id_last_name"
                                     value="{% if form.last_name.value %}{{ form.last_name.value }}{% endif %} "
                                     name="last_name"
-                                    placeholder="Введіть ваше прізвище" required>
+                                    placeholder="{% trans "Введіть ваше прізвище" %}" required>
                                     {% if form.last_name.errors %}
                                         <div class="alert-danger alert-dismissible fade show">{{ form.last_name.errors }}</div>
                                     {% endif %}
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="id_username" class="form-label">Им'я користувача*</label>
+                                <label for="id_username" class="form-label">{% trans "Им'я користувача*" %}</label>
                                 <input type="text" class="form-control" id="id_username"
                                     value="{% if form.username.value %}{{ form.username.value }}{% endif %} "
                                     name="username"
-                                    placeholder="Введіть ім'я користувача" required>
+                                    placeholder="{% trans "Введіть ім'я користувача" %}" required>
                                     {% if form.user_name.errors %}
                                         <div class="alert-danger alert-dismissible fade show">{{ form.user_name.errors }}</div>
                                     {% endif %}
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="id_email" class="form-label">Email*</label>
+                                <label for="id_email" class="form-label">{% trans "Email*" %}</label>
                                 <input type="email" class="form-control" id="id_email"
                                     value="{% if form.email.value %}{{ form.email.value }}{% endif %} "
                                     name="email"
-                                    placeholder="Введіть ваш email" required>
+                                    placeholder="{% trans "Введіть ваш email" %}" required>
                                     {% if form.email.errors %}
                                         <div class="alert-danger alert-dismissible fade show">{{ form.email.errors }}</div>
                                     {% endif %}
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="id_password1" class="form-label">Пароль*</label>
+                                <label for="id_password1" class="form-label">{% trans "Пароль*" %}</label>
                                 <input type="password" class="form-control" id="id_password1"
                                     value="{% if form.password1.value %}{{ form.password1.value }}{% else %}{{ '' }}{% endif %}"
                                     name="password1"
-                                    placeholder="Введіть пароль" required>
+                                    placeholder="{% trans "Введіть пароль" %}" required>
 
                                     {% if form.password1.errors %}
                                         <div class="alert-danger alert-dismissible fade show">{{ form.password1.errors }}</div>
                                     {% endif %}
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="id_password2" class="form-label">Підтвердження пароля*</label>
+                                <label for="id_password2" class="form-label">{% trans "Підтвердження пароля*" %}</label>
                                 <input type="password" class="form-control" id="id_password1"
                                     value="{% if form.password2.value %}{{ form.password2.value }}{% else %}{{ '' }}{% endif %}"
                                     name="password2"
-                                    placeholder="Підтвердіть пароль" required>
+                                    placeholder="{% trans "Підтвердіть пароль" %}" required>
                                     {% if form.password2.errors %}
                                         <div class="alert-danger alert-dismissible fade show">{{ form.password2.errors }}</div>
                                     {% endif %}
                             </div>
                         </div>
                         <button type="submit"
-                            class="btn btn-dark btn-block">Зареєструватися</button>
+                            class="btn btn-dark btn-block">{% trans "Зареєструватися" %}</button>
                     </form>
                 </div>
             </div>

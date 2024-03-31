@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-31 04:07+0300\n"
+"POT-Creation-Date: 2024-03-31 23:42+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgid "x"
 msgstr ""
 
 #: .\carts\templates\carts\includes\included_cart.html:43
-#: .\goods\templates\goods\catalog.html:114 .\templates\base.html:112
+#: .\goods\templates\goods\catalog.html:114 .\templates\base.html:113
 #: .\templates\includes\cart_button.html:9
 msgid "Catalog Icon"
 msgstr "Значок каталога"
@@ -35,14 +35,10 @@ msgid "Total"
 msgstr "Всего"
 
 #: .\carts\templates\carts\includes\included_cart.html:54
-
-#| msgid "Filters form"
 msgid "items for"
 msgstr "товар(а) на"
 
 #: .\carts\templates\carts\includes\included_cart.html:60
-
-#| msgid "Place order"
 msgid "Place an order"
 msgstr "Разместить заказ"
 
@@ -252,63 +248,65 @@ msgstr "Наличными/картой при доставке"
 msgid "Place order"
 msgstr "Разместить заказ"
 
-#: .\templates\base.html:30
+#: .\templates\base.html:31
 msgid "Home"
 msgstr "Домашняя страница"
 
-#: .\templates\base.html:33
+#: .\templates\base.html:34
 msgid "Toggle navigation"
 msgstr ""
 
-#: .\templates\base.html:41
+#: .\templates\base.html:42
 msgid "Інформація"
 msgstr "Информация"
 
-#: .\templates\base.html:44
+#: .\templates\base.html:45
 msgid "Доставка і оплата"
 msgstr "Доставка и оплата"
 
-#: .\templates\base.html:45
+#: .\templates\base.html:46
 msgid "Контактна інформація"
 msgstr "Контактная информация"
 
-#: .\templates\base.html:46
+#: .\templates\base.html:47
 msgid "Про нас"
 msgstr "Про нас"
 
-#: .\templates\base.html:50 .\templates\base.html:63
+#: .\templates\base.html:51 .\templates\base.html:64
+#: .\users\templates\users\profile.html:89
+#: .\users\templates\users\users_cart.html:12
 msgid "Кошик"
 msgstr "Корзина"
 
-#: .\templates\base.html:54
+#: .\templates\base.html:55 .\users\templates\users\login.html:36
 msgid "Увійти"
 msgstr "Войти"
 
-#: .\templates\base.html:60
+#: .\templates\base.html:61
 msgid "Мій профіль"
 msgstr "Мой профиль"
 
-#: .\templates\base.html:64
+#: .\templates\base.html:65
 msgid "Особистий кабінет"
 msgstr "Личный кабинет"
 
-#: .\templates\base.html:67
+#: .\templates\base.html:68
 msgid "Адмін панель"
 msgstr "Админ панель"
 
-#: .\templates\base.html:72
+#: .\templates\base.html:73
 msgid "Вийти"
 msgstr "Выйти"
 
-#: .\templates\base.html:83
+#: .\templates\base.html:84
 msgid "Search"
 msgstr "Поиск"
 
-#: .\templates\base.html:84
+#: .\templates\base.html:85
 msgid "Пошук"
 msgstr "Поиск"
 
-#: .\templates\base.html:111
+#: .\templates\base.html:112
 msgid "Каталог"
 msgstr "Каталог"
 
@@ -319,6 +317,187 @@ msgstr ""
 #: .\templates\includes\cart_button.html:24
 msgid "Cart"
 msgstr "Корзина"
+
+#: .\users\templates\users\login.html:15
+msgid "Авторизація"
+msgstr "Авторизация"
+
+#: .\users\templates\users\login.html:22
+msgid "Ім'я користувача"
+msgstr "Имя пользователя"
+
+#: .\users\templates\users\login.html:26
+#: .\users\templates\users\profile.html:62
+#: .\users\templates\users\registration.html:43
+msgid "Введіть ім'я користувача"
+msgstr "Введите имя пользователя"
+
+#: .\users\templates\users\login.html:31
+msgid "Пароль"
+msgstr "Пароль"
+
+#: .\users\templates\users\login.html:33
+msgid "Введіть ваш пароль"
+msgstr "Введите ваш пароль"
+
+#: .\users\templates\users\login.html:39
+msgid "Створити акаунт"
+msgstr "Создать аккаунт"
+
+#: .\users\templates\users\login.html:43
+msgid "Або авторизуйтесь через:"
+msgstr "Или авторизуйтесь через:"
+
+#: .\users\templates\users\profile.html:13
+msgid "Профіль користувача"
+msgstr "Профиль пользователя"
+
+#: .\users\templates\users\profile.html:20
+#: .\users\templates\users\profile.html:24
+msgid "Аватар користувача"
+msgstr "Аватар пользователя"
+
+#: .\users\templates\users\profile.html:36
+msgid "Ім'я*"
+msgstr "Имя"
+
+#: .\users\templates\users\profile.html:39
+msgid "Введіть ваше ім'я"
+msgstr "Введите ваше имя"
+
+#: .\users\templates\users\profile.html:48
+#: .\users\templates\users\registration.html:29
+msgid "Прізвище*"
+msgstr "Фамилия*"
+
+#: .\users\templates\users\profile.html:51
+#: .\users\templates\users\registration.html:33
+msgid "Введіть ваше прізвище"
+msgstr "Введите вашу фамилию"
+
+#: .\users\templates\users\profile.html:59
+msgid "Ім'я користувача*"
+msgstr "Имя пользователя*"
+
+#: .\users\templates\users\profile.html:70
+#: .\users\templates\users\registration.html:49
+msgid "Email*"
+msgstr "Email*"
+
+#: .\users\templates\users\profile.html:73
+msgid "Введіть ваш email *youremail@example.com"
+msgstr "Введите ваш email *youremail@example.com"
+
+#: .\users\templates\users\profile.html:81
+msgid "Зберегти"
+msgstr "Сохранить"
+
+#: .\users\templates\users\profile.html:100
+msgid "Мої замовлення"
+msgstr "Мои заказы"
+
+#: .\users\templates\users\profile.html:108
+msgid "Замовлення № "
+msgstr "Заказ №"
+
+#: .\users\templates\users\profile.html:108
+msgid "Статус:"
+msgstr "Статус:"
+
+#: .\users\templates\users\profile.html:116
+msgid "Товар"
+msgstr "Товар"
+
+#: .\users\templates\users\profile.html:117
+msgid "Кількість"
+msgstr "Количество"
+
+#: .\users\templates\users\profile.html:118
+msgid "Ціна"
+msgstr "Цена"
+
+#: .\users\templates\users\profile.html:119
+msgid "Загальна вартість"
+msgstr "Общая стоимость"
+
+#: .\users\templates\users\registration.html:14
+msgid "Реєстрація"
+msgstr "Регистрация"
+
+#: .\users\templates\users\registration.html:19
+msgid "Им'я*"
+msgstr "Имя*"
+
+#: .\users\templates\users\registration.html:23
+msgid "Введіть ваше им'я"
+msgstr "Введите ваше имя"
+
+#: .\users\templates\users\registration.html:39
+msgid "Им'я користувача*"
+msgstr "Имя пользователя*"
+
+#: .\users\templates\users\registration.html:53
+msgid "Введіть ваш email"
+msgstr "Введите ваш email"
+
+#: .\users\templates\users\registration.html:59
+msgid "Пароль*"
+msgstr "Пароль*"
+
+#: .\users\templates\users\registration.html:63
+msgid "Введіть пароль"
+msgstr "Введите пароль"
+
+#: .\users\templates\users\registration.html:70
+msgid "Підтвердження пароля*"
+msgstr "Подтверждение пароля*"
+
+#: .\users\templates\users\registration.html:74
+msgid "Підтвердіть пароль"
+msgstr "Подтвердите пароль"
+
+#: .\users\templates\users\registration.html:81
+msgid "Зареєструватися"
+msgstr "Зарегистрироваться"
+
+#: .\users\views.py:31
+#, fuzzy, python-format
+#| msgid "{username}, Вы вошли в учетную запись"
+msgid "%(username)s, Ви увійшли до облікового запису"
+msgstr "%(username)s, Вы вошли в учетную запись"
+
+#: .\users\views.py:44
+msgid "Home - Авторизация"
+msgstr "Home - Авторизация"
+
+#: .\users\views.py:67
+#, python-brace-format
+msgid "{user.username}, Вы успешно зарегистрировались и вошли в учетную запись"
+msgstr ""
+"{user.username}, Вы успешно зарегистрировались и вошли в учетную запись"
+
+#: .\users\views.py:72
+msgid "Home - Регистрация"
+msgstr "Home - Регистрация"
+
+#: .\users\views.py:85
+msgid "профиль успешно обновлен"
+msgstr "профиль успешно обновлен"
+
+#: .\users\views.py:107
+msgid "Home - Кабинет"
+msgstr "Home - Кабинет"
+
+#: .\users\views.py:121
+#, python-brace-format
+msgid "{username}"
+msgstr ""
+
+#: .\users\views.py:122
+#, fuzzy
+#| msgid "{request.user.username} Вы вышли из учетной записи"
+msgid "Вы вышли из учетной записи"
+msgstr "{request.user.username} Вы вышли из учетной записи"
 
 #: .\venv\Lib\site-packages\IPython\core\tests\test_completer.py:420
 msgid "open('foo"

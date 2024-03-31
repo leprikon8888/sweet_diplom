@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-31 04:07+0300\n"
+"POT-Creation-Date: 2024-03-31 23:42+0300\n"
 "PO-Revision-Date: 2020-10-15 19:53+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgid "x"
 msgstr ""
 
 #: .\carts\templates\carts\includes\included_cart.html:43
-#: .\goods\templates\goods\catalog.html:114 .\templates\base.html:112
+#: .\goods\templates\goods\catalog.html:114 .\templates\base.html:113
 #: .\templates\includes\cart_button.html:9
 msgid "Catalog Icon"
 msgstr "Картка товару"
@@ -35,14 +35,10 @@ msgid "Total"
 msgstr "Всього"
 
 #: .\carts\templates\carts\includes\included_cart.html:54
-
-#| msgid "Filters form"
 msgid "items for"
 msgstr "товари на"
 
 #: .\carts\templates\carts\includes\included_cart.html:60
-
-#| msgid "Place order"
 msgid "Place an order"
 msgstr "Замовлення"
 
@@ -110,8 +106,6 @@ msgid "id"
 msgstr "id"
 
 #: .\goods\templates\goods\catalog.html:108
-#, fuzzy
-#| msgid "Accounts"
 msgid "Discount"
 msgstr "Знижка"
 
@@ -213,8 +207,6 @@ msgid "First name"
 msgstr "Ім'я"
 
 #: .\orders\templates\orders\create_order.html:36
-#, fuzzy
-#| msgid "name"
 msgid "Last name"
 msgstr "Прізвище"
 
@@ -239,8 +231,6 @@ msgid "Self-pickup"
 msgstr "Самовивіз"
 
 #: .\orders\templates\orders\create_order.html:68
-#, fuzzy
-#| msgid "email address"
 msgid "Delivery address"
 msgstr "Адреса доставки"
 
@@ -260,63 +250,65 @@ msgstr "Готівка/Картка при отриманні"
 msgid "Place order"
 msgstr "Зробити замовлення"
 
-#: .\templates\base.html:30
+#: .\templates\base.html:31
 msgid "Home"
 msgstr "Домашня сторінка"
 
-#: .\templates\base.html:33
+#: .\templates\base.html:34
 msgid "Toggle navigation"
 msgstr ""
 
-#: .\templates\base.html:41
+#: .\templates\base.html:42
 msgid "Інформація"
 msgstr "Інформація"
 
-#: .\templates\base.html:44
+#: .\templates\base.html:45
 msgid "Доставка і оплата"
 msgstr "Доставка і оплата"
 
-#: .\templates\base.html:45
+#: .\templates\base.html:46
 msgid "Контактна інформація"
 msgstr "Контактна інформація"
 
-#: .\templates\base.html:46
+#: .\templates\base.html:47
 msgid "Про нас"
 msgstr "Про нас"
 
-#: .\templates\base.html:50 .\templates\base.html:63
+#: .\templates\base.html:51 .\templates\base.html:64
+#: .\users\templates\users\profile.html:89
+#: .\users\templates\users\users_cart.html:12
 msgid "Кошик"
 msgstr "Кошик"
 
-#: .\templates\base.html:54
+#: .\templates\base.html:55 .\users\templates\users\login.html:36
 msgid "Увійти"
 msgstr "Увійти"
 
-#: .\templates\base.html:60
+#: .\templates\base.html:61
 msgid "Мій профіль"
 msgstr "Мій профіль"
 
-#: .\templates\base.html:64
+#: .\templates\base.html:65
 msgid "Особистий кабінет"
 msgstr "Особистий кабінет"
 
-#: .\templates\base.html:67
+#: .\templates\base.html:68
 msgid "Адмін панель"
 msgstr "Адмін панель"
 
-#: .\templates\base.html:72
+#: .\templates\base.html:73
 msgid "Вийти"
 msgstr "Вийти"
 
-#: .\templates\base.html:83
+#: .\templates\base.html:84
 msgid "Search"
 msgstr "Пошук"
 
-#: .\templates\base.html:84
+#: .\templates\base.html:85
 msgid "Пошук"
 msgstr "Пошук"
 
-#: .\templates\base.html:111
+#: .\templates\base.html:112
 msgid "Каталог"
 msgstr "Каталог"
 
@@ -327,6 +319,188 @@ msgstr ""
 #: .\templates\includes\cart_button.html:24
 msgid "Cart"
 msgstr "Кошик"
+
+#: .\users\templates\users\login.html:15
+msgid "Авторизація"
+msgstr "Home - Авторизація"
+
+#: .\users\templates\users\login.html:22
+msgid "Ім'я користувача"
+msgstr ""
+
+#: .\users\templates\users\login.html:26
+#: .\users\templates\users\profile.html:62
+#: .\users\templates\users\registration.html:43
+msgid "Введіть ім'я користувача"
+msgstr ""
+
+#: .\users\templates\users\login.html:31
+msgid "Пароль"
+msgstr ""
+
+#: .\users\templates\users\login.html:33
+msgid "Введіть ваш пароль"
+msgstr ""
+
+#: .\users\templates\users\login.html:39
+msgid "Створити акаунт"
+msgstr ""
+
+#: .\users\templates\users\login.html:43
+msgid "Або авторизуйтесь через:"
+msgstr ""
+
+#: .\users\templates\users\profile.html:13
+msgid "Профіль користувача"
+msgstr ""
+
+#: .\users\templates\users\profile.html:20
+#: .\users\templates\users\profile.html:24
+msgid "Аватар користувача"
+msgstr ""
+
+#: .\users\templates\users\profile.html:36
+msgid "Ім'я*"
+msgstr ""
+
+#: .\users\templates\users\profile.html:39
+msgid "Введіть ваше ім'я"
+msgstr ""
+
+#: .\users\templates\users\profile.html:48
+#: .\users\templates\users\registration.html:29
+msgid "Прізвище*"
+msgstr ""
+
+#: .\users\templates\users\profile.html:51
+#: .\users\templates\users\registration.html:33
+msgid "Введіть ваше прізвище"
+msgstr ""
+
+#: .\users\templates\users\profile.html:59
+msgid "Ім'я користувача*"
+msgstr ""
+
+#: .\users\templates\users\profile.html:70
+#: .\users\templates\users\registration.html:49
+msgid "Email*"
+msgstr "Email"
+
+#: .\users\templates\users\profile.html:73
+msgid "Введіть ваш email *youremail@example.com"
+msgstr ""
+
+#: .\users\templates\users\profile.html:81
+msgid "Зберегти"
+msgstr ""
+
+#: .\users\templates\users\profile.html:100
+msgid "Мої замовлення"
+msgstr ""
+
+#: .\users\templates\users\profile.html:108
+msgid "Замовлення № "
+msgstr ""
+
+#: .\users\templates\users\profile.html:108
+msgid "Статус:"
+msgstr ""
+
+#: .\users\templates\users\profile.html:116
+msgid "Товар"
+msgstr ""
+
+#: .\users\templates\users\profile.html:117
+msgid "Кількість"
+msgstr ""
+
+#: .\users\templates\users\profile.html:118
+msgid "Ціна"
+msgstr ""
+
+#: .\users\templates\users\profile.html:119
+msgid "Загальна вартість"
+msgstr ""
+
+#: .\users\templates\users\registration.html:14
+msgid "Реєстрація"
+msgstr "Реєстрація"
+
+#: .\users\templates\users\registration.html:19
+msgid "Им'я*"
+msgstr ""
+
+#: .\users\templates\users\registration.html:23
+msgid "Введіть ваше им'я"
+msgstr ""
+
+#: .\users\templates\users\registration.html:39
+msgid "Им'я користувача*"
+msgstr ""
+
+#: .\users\templates\users\registration.html:53
+msgid "Введіть ваш email"
+msgstr ""
+
+#: .\users\templates\users\registration.html:59
+msgid "Пароль*"
+msgstr ""
+
+#: .\users\templates\users\registration.html:63
+msgid "Введіть пароль"
+msgstr ""
+
+#: .\users\templates\users\registration.html:70
+msgid "Підтвердження пароля*"
+msgstr ""
+
+#: .\users\templates\users\registration.html:74
+msgid "Підтвердіть пароль"
+msgstr ""
+
+#: .\users\templates\users\registration.html:81
+msgid "Зареєструватися"
+msgstr ""
+
+#: .\users\views.py:31
+#, fuzzy, python-format
+#| msgid "{username}, Вы вошли в учетную запись"
+msgid "%(username)s, Ви увійшли до облікового запису"
+msgstr "{username}, Ви увійшли до облікового запису"
+
+#: .\users\views.py:44
+msgid "Home - Авторизация"
+msgstr "Home - Авторизація"
+
+#: .\users\views.py:67
+#, python-brace-format
+msgid "{user.username}, Вы успешно зарегистрировались и вошли в учетную запись"
+msgstr ""
+"{user.username}, Ви успішно зареєструвалися та увійшли до облікового запису"
+
+#: .\users\views.py:72
+msgid "Home - Регистрация"
+msgstr "Home - Реєстрація"
+
+#: .\users\views.py:85
+msgid "профиль успешно обновлен"
+msgstr "профіль успішно оновлено"
+
+#: .\users\views.py:107
+msgid "Home - Кабинет"
+msgstr "Home - Кабінет"
+
+#: .\users\views.py:121
+#, fuzzy, python-brace-format
+#| msgid "Username"
+msgid "{username}"
+msgstr "Ім'я користувача"
+
+#: .\users\views.py:122
+#, fuzzy
+#| msgid "{request.user.username} Вы вышли из учетной записи"
+msgid "Вы вышли из учетной записи"
+msgstr "{request.user.username} Ви вийшли з облікового запису"
 
 #: .\venv\Lib\site-packages\IPython\core\tests\test_completer.py:420
 msgid "open('foo"
@@ -490,8 +664,6 @@ msgid "Enter a valid integer."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\core\validators.py:176
-#, fuzzy
-#| msgid "Your account has no verified email address."
 msgid "Enter a valid email address."
 msgstr "Немає підтвердження по e-mail для Вашого акаунту."
 
@@ -784,14 +956,10 @@ msgid "Small integer"
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2113
-#, fuzzy
-#| msgid "Email Address"
 msgid "IPv4 address"
 msgstr "E-mail адреса"
 
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2144
-#, fuzzy
-#| msgid "Email Address"
 msgid "IP address"
 msgstr "E-mail адреса"
 
@@ -1089,14 +1257,10 @@ msgid "Clear"
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\forms\widgets.py:464
-#, fuzzy
-#| msgid "Current Password"
 msgid "Currently"
 msgstr "Поточний пароль"
 
 #: .\venv\Lib\site-packages\django\forms\widgets.py:465
-#, fuzzy
-#| msgid "Change Email"
 msgid "Change"
 msgstr "Змінити e-mail"
 
@@ -1109,8 +1273,6 @@ msgid "Yes"
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\forms\widgets.py:796
-#, fuzzy
-#| msgid "Note"
 msgid "No"
 msgstr "Зауважте"
 
@@ -1267,10 +1429,8 @@ msgid "August"
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:33
-#, fuzzy
-#| msgid "Remember Me"
 msgid "September"
-msgstr "Запам'ятати мене"
+msgstr "Вересень"
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:34
 msgid "October"
@@ -1281,10 +1441,8 @@ msgid "November"
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:36
-#, fuzzy
-#| msgid "Remember Me"
 msgid "December"
-msgstr "Запам'ятати мене"
+msgstr "Грудень"
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:39
 msgid "jan"
@@ -1295,8 +1453,6 @@ msgid "feb"
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:41
-#, fuzzy
-#| msgid "primary"
 msgid "mar"
 msgstr "основний"
 
@@ -1308,7 +1464,7 @@ msgstr ""
 #, fuzzy
 #| msgid "primary"
 msgid "may"
-msgstr "основний"
+msgstr "березень"
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:44
 msgid "jun"
@@ -1439,11 +1595,9 @@ msgid "August"
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:75
-#, fuzzy
-#| msgid "Remember Me"
 msgctxt "alt. month"
 msgid "September"
-msgstr "Запам'ятати мене"
+msgstr "Вересень"
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:76
 msgctxt "alt. month"
@@ -1456,11 +1610,9 @@ msgid "November"
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:78
-#, fuzzy
-#| msgid "Remember Me"
 msgctxt "alt. month"
 msgid "December"
-msgstr "Запам'ятати мене"
+msgstr "Грудень"
 
 #: .\venv\Lib\site-packages\django\utils\ipv6.py:8
 msgid "This is not a valid IPv6 address."
@@ -1759,12 +1911,6 @@ msgstr ""
 
 #~ msgid "The username and/or password you specified are not correct."
 #~ msgstr "Введене ім'я користувача і/або пароль є некоректними."
-
-#~ msgid "Email"
-#~ msgstr "E-mail"
-
-#~ msgid "Username"
-#~ msgstr "Ім'я користувача"
 
 #~ msgid "Username or email"
 #~ msgstr "Ім'я користувача або e-mail"

@@ -8,8 +8,7 @@ from carts.models import Cart
 from orders.models import Order, OrderItem
 from users.forms import UserLoginForm, UserRegistrationForm, ProfileForm
 from django.contrib.auth import authenticate
-
-
+from django.utils.translation import gettext_lazy as _
 
 def login(request):
     """ A function to handle user login. It takes a request object as a parameter and performs
@@ -29,7 +28,7 @@ def login(request):
 
             if user:
                 auth.login(request, user)
-                messages.success(request, f'{username}, Ви увійшли в обліковий запис')
+                messages.success(request, _('%(username)s, Ви увійшли до облікового запису') % {'username': username})  # Используем gettext_lazy с форматированием строк
 
                 if session_key:
                     Cart.objects.filter(session_key=session_key).update(user=user)
@@ -42,10 +41,11 @@ def login(request):
     else:
         form = UserLoginForm()
     context = {
-        'title': 'Home - Авторизація',
+        'title': _('Home - Авторизація'),  # Используем gettext_lazy
         'form': form
     }
     return render(request, 'users/login.html', context)
+
 
 
 def registration(request):
@@ -65,17 +65,15 @@ def registration(request):
 
             if session_key:
                 Cart.objects.filter(session_key=session_key).update(user=user)
-            messages.success(request, f'{user.username}, Ви успішно зареєструвалися та увійшли в обліковий запис')
+            messages.success(request, _(f'{user.username}, Ви успішно зареєструвалися та увійшли до облікового запису'))  # Используем gettext
             return HttpResponseRedirect(reverse('main:index'))
     else:
         form = UserRegistrationForm()
     context = {
-        'title': 'Home - Регистрація',
+        'title': _('Home - Реєстрація'),  # Используем gettext
         'form': form
     }
     return render(request, 'users/registration.html', context)
-
-
 
 @login_required
 def profile(request):
@@ -85,7 +83,7 @@ def profile(request):
         form = ProfileForm(data=request.POST, instance=request.user, files=request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(request, 'профайл успішно оновлено')
+            messages.success(request, _('профіль успішно оновлено'))  # Используем gettext
             return HttpResponseRedirect(reverse('users:profile'))
     else:
         initial_data = {
@@ -107,21 +105,23 @@ def profile(request):
     )
 
     context = {
-        'title': 'Home - Кабінет',
+        'title': _('Home - Кабінет'),  # Используем gettext
         'form': form,
         'orders': orders,
     }
     return render(request, 'users/profile.html', context)
 
-
 def users_cart(request):
     """A view function to display the user's cart"""
     return render(request, 'users/users_cart.html')
 
-
 @login_required
 def logout(request):
     """A view function to logout the user"""
-    messages.success(request, f'{request.user.username} Ви вийшли із облікового запису')
+    username = request.user.username
+    logout_message_part1 = _("{username}").format(username=username)
+    logout_message_part2 = _("Ви вийшли з облікового запису")
+    logout_message = f"{logout_message_part1} {logout_message_part2}"
+    messages.success(request, logout_message)
     auth.logout(request)
     return redirect(reverse('main:index'))

@@ -14,7 +14,7 @@ def send_order_to_telegram(order):
 
     order_items = order.orderitem_set.all()
     order_details = "Новый заказ:\n\n"
-    order_details += "Покупатель: " + order.first_name + " " + order.last_name + "\n"
+    order_details += "Покупатель: " + order.first_name + " " + order.last_name + "\nНомер телефона: " + order.phone_number + "\n"
     if order.delivery_address:
         order_details += "Адрес доставки: " + order.delivery_address + "\n"
     order_details += "Оплата при получении: " + ("Да" if order.payment_on_get else "Нет") + "\n\n"

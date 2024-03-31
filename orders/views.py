@@ -59,7 +59,7 @@ def create_order(request):
 
                         # Отправить информацию о заказе в Телеграм
                         try:
-                            asyncio.run(send_order_to_telegram(order))
+                            (send_order_to_telegram(order))
                         except Exception as e:
                             messages.error(request, f"Ошибка при отправке сообщения в Телеграм: {str(e)}")
 
