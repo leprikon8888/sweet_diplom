@@ -1,29 +1,30 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load carts_tags %}
+{% load i18n %}
 
 {% block cont %}
     <div class=" bg-white p-4 mb-4 mx-2 rounded custom-shadow">
         <div class="container">
-            <h3 class="text-center mb-4">Обрані товари</h3>
+            <h3 class="text-center mb-4">{% trans 'Selected products' %}</h3>
             <div class="container" id="cart-items-container">
-                <!-- Разметка корзины -->
+                <!-- {% trans 'Cart markup' %} -->
                 {% user_carts request as carts %}
 
                 {% include 'carts/includes/included_cart.html' %}
-                <!-- Закончилась разметка корзины -->
+                <!-- {% trans 'End of cart markup' %} -->
             </div>
         </div>
-        <!-- Детали заказа -->
+        <!-- {% trans 'Order details' %} -->
         <div class="container">
-            <h3 class="text-center">Деталі замовлення</h3>
+            <h3 class="text-center">{% trans 'Order details' %}</h3>
             <div class="card mb-3">
                 <div class="card-body">
                     <form action="{% url 'orders:create_eorder' %}" method='post'>
                         {% csrf_token %}
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="id_first_name" class="form-label">Ім'я*:</label>
+                                <label for="id_first_name" class="form-label">{% trans 'First name' %}*:</label>
                                 <input type="text" class="form-control" id="id_first_name"
                                     value="{% if form.first_name.value %}{{ form.first_name.value }}{% endif %} "
                                     name="first_name" required>
@@ -32,7 +33,7 @@
                                 {% endif %}
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="id_last_name" class="form-label">Прізвище*:</label>
+                                <label for="id_last_name" class="form-label">{% trans 'Last name' %}*:</label>
                                 <input type="text" class="form-control" id="id_last_name" name="last_name"
                                 value="{% if form.last_name.value %}{{ form.last_name.value }}{% endif %} "
                                 required>
@@ -41,32 +42,30 @@
                                 {% endif %}
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="id_phone_number" class="form-label">Номер телефону*:</label>
+                                <label for="id_phone_number" class="form-label">{% trans 'Phone number' %}*:</label>
                                 <input type="text" class="form-control" id="id_phone_number" name="phone_number"
                                     value="{% if form.phone_number.value %}{{ form.phone_number.value }}{% endif %} "
-                                    placeholder="У форматі: XXX-XXX-XX-XX"
+                                    placeholder="{% trans 'In format: XXX-XXX-XX-XX' %}"
                                     required>
                                     {% if form.phone_number.errors %}
                                         <div class="alert-danger alert-dismissible fade show">{{ form.phone_number.errors }}</div>
                                     {% endif %}
                             </div>
                             <div class="col-md-12 mb-3">
-                                <label for="delivery" class="form-label">Спосіб доставки: </label>
+                                <label for="delivery" class="form-label">{% trans 'Delivery method' %}: </label>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="requires_delivery"
                                         id="id_requires_delivery" value="1" checked>
-                                    <label class="form-check-label" for="id_requires_delivery">Потрібна
-                                        доставка</label>
+                                    <label class="form-check-label" for="id_requires_delivery">{% trans 'Delivery required' %}</label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="requires_delivery"
                                         id="id_requires_delivery" value="0">
-                                    <label class="form-check-label" for="id_requires_delivery">Самовивіз</label>
+                                    <label class="form-check-label" for="id_requires_delivery">{% trans 'Self-pickup' %}</label>
                                 </div>
                             </div>
                             <div class="mb-3" id="deliveryAddressField">
-                                <label for="id_delivery_address" class="form-label">Адреса
-                                    доставки*:</label>
+                                <label for="id_delivery_address" class="form-label">{% trans 'Delivery address' %}*:</label>
                                 <textarea class="form-control" id="id_delivery_address"
                                     value="{% if form.delivery_address.value %}{{ form.delivery_address.value }}{% endif %} "
                                     name="delivery_address" rows="2"></textarea>
@@ -75,25 +74,23 @@
                                 {% endif %}
                             </div>
                             <div class="col-md-12 mb-3">
-                                <label class="form-label">Спосіб оплати: </label>
+                                <label class="form-label">{% trans 'Payment method' %}: </label>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="payment_on_get"
                                         id="id_payment_on_get" value="0" checked>
-                                    <label class="form-check-label" for="id_payment_on_get">Оплата
-                                        картою</label>
+                                    <label class="form-check-label" for="id_payment_on_get">{% trans 'Card payment' %}</label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="payment_on_get"
                                         id="id_payment_on_get" value="1">
-                                    <label class="form-check-label" for="id_payment_on_get">Готівкою/картою
-                                        при отриманні</label>
+                                    <label class="form-check-label" for="id_payment_on_get">{% trans 'Cash/Card on delivery' %}</label>
                                      {% if form.payment_on_get.errors %}
                                          <div class="alert-danger alert-dismissible fade show">{{ form.payment_on_get.errors }}</div>
                                      {% endif %}
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-dark">Оформити замовлення</button>
+                        <button type="submit" class="btn btn-dark">{% trans 'Place order' %}</button>
                     </form>
                 </div>
             </div>

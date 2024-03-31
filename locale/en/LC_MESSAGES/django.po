@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-30 04:28+0200\n"
+"POT-Creation-Date: 2024-03-31 02:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,13 +18,80 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: .\orders\templates\orders\create_order.html:8
+msgid "Selected products"
+msgstr "Selected products"
+
+#: .\orders\templates\orders\create_order.html:10
+#: .\templates\includes\cart_button.html:26
+msgid "Cart markup"
+msgstr "Cart markup"
+
+#: .\orders\templates\orders\create_order.html:14
+#: .\templates\includes\cart_button.html:28
+msgid "End of cart markup"
+msgstr "End of cart markup"
+
+#: .\orders\templates\orders\create_order.html:17
+#: .\orders\templates\orders\create_order.html:19
+msgid "Order details"
+msgstr "Order details"
+
+#: .\orders\templates\orders\create_order.html:26
+msgid "First name"
+msgstr "First name"
+
+#: .\orders\templates\orders\create_order.html:35
+msgid "Last name"
+msgstr "Last name"
+
+#: .\orders\templates\orders\create_order.html:44
+msgid "Phone number"
+msgstr "Phone number"
+
+#: .\orders\templates\orders\create_order.html:47
+msgid "In format: XXX-XXX-XX-XX"
+msgstr "In format: XXX-XXX-XX-XX"
+
+#: .\orders\templates\orders\create_order.html:54
+msgid "Delivery method"
+msgstr "Delivery method"
+
+#: .\orders\templates\orders\create_order.html:58
+msgid "Delivery required"
+msgstr "Delivery required"
+
+#: .\orders\templates\orders\create_order.html:63
+msgid "Self-pickup"
+msgstr "Self-pickup"
+
+#: .\orders\templates\orders\create_order.html:67
+msgid "Delivery address"
+msgstr "Delivery address"
+
+#: .\orders\templates\orders\create_order.html:76
+msgid "Payment method"
+msgstr "Payment method"
+
+#: .\orders\templates\orders\create_order.html:80
+msgid "Card payment"
+msgstr "Card payment"
+
+#: .\orders\templates\orders\create_order.html:85
+msgid "Cash/Card on delivery"
+msgstr "Cash/Card on delivery"
+
+#: .\orders\templates\orders\create_order.html:92
+msgid "Place order"
+msgstr "Place order"
+
 #: .\templates\base.html:30
 msgid "Home"
-msgstr ""
+msgstr "Home"
 
 #: .\templates\base.html:33
 msgid "Toggle navigation"
-msgstr ""
+msgstr "Toggle navigation"
 
 #: .\templates\base.html:41
 msgid "Інформація"
@@ -74,12 +141,25 @@ msgstr ""
 msgid "Пошук"
 msgstr "Search"
 
-#: .\templates\base.html:98
+#: .\templates\base.html:111
 msgid "Каталог"
 msgstr "Catalog"
 
-#: .\templates\base.html:99
+#: .\templates\base.html:112 .\templates\includes\cart_button.html:9
 msgid "Catalog Icon"
+msgstr ""
+
+#: .\templates\includes\cart_button.html:14
+msgid "Cart modal markup"
+msgstr ""
+
+#: .\templates\includes\cart_button.html:21
+#: .\templates\includes\notifications.html:9
+msgid "Close"
+msgstr ""
+
+#: .\templates\includes\cart_button.html:24
+msgid "Cart"
 msgstr ""
 
 #: .\venv\Lib\site-packages\IPython\core\tests\test_completer.py:420

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-30 04:28+0200\n"
+"POT-Creation-Date: 2024-03-31 02:15+0200\n"
 "PO-Revision-Date: 2020-10-15 19:53+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,77 @@ msgstr ""
 "11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
 "100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
 "(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+
+#: .\orders\templates\orders\create_order.html:8
+msgid "Selected products"
+msgstr "Обрані продукти"
+
+#: .\orders\templates\orders\create_order.html:10
+#: .\templates\includes\cart_button.html:26
+msgid "Cart markup"
+msgstr "Розмітка кошика"
+
+#: .\orders\templates\orders\create_order.html:14
+#: .\templates\includes\cart_button.html:28
+msgid "End of cart markup"
+msgstr "Кінець розмітки кошика"
+
+#: .\orders\templates\orders\create_order.html:17
+#: .\orders\templates\orders\create_order.html:19
+msgid "Order details"
+msgstr "Деталі замовлення"
+
+#: .\orders\templates\orders\create_order.html:26
+msgid "First name"
+msgstr "Ім'я"
+
+#: .\orders\templates\orders\create_order.html:35
+#, fuzzy
+#| msgid "name"
+msgid "Last name"
+msgstr "Прізвище"
+
+#: .\orders\templates\orders\create_order.html:44
+msgid "Phone number"
+msgstr "Номер телефону"
+
+#: .\orders\templates\orders\create_order.html:47
+msgid "In format: XXX-XXX-XX-XX"
+msgstr "В форматі: XXX-XXX-XX-XX"
+
+#: .\orders\templates\orders\create_order.html:54
+msgid "Delivery method"
+msgstr "Метод доставки"
+
+#: .\orders\templates\orders\create_order.html:58
+msgid "Delivery required"
+msgstr "Необхідна доставка"
+
+#: .\orders\templates\orders\create_order.html:63
+msgid "Self-pickup"
+msgstr "Самовивіз"
+
+#: .\orders\templates\orders\create_order.html:67
+#, fuzzy
+#| msgid "email address"
+msgid "Delivery address"
+msgstr "Адреса доставки"
+
+#: .\orders\templates\orders\create_order.html:76
+msgid "Payment method"
+msgstr "Спосіб оплати"
+
+#: .\orders\templates\orders\create_order.html:80
+msgid "Card payment"
+msgstr "Оплата карткою"
+
+#: .\orders\templates\orders\create_order.html:85
+msgid "Cash/Card on delivery"
+msgstr "Готівка/Картка при отриманні"
+
+#: .\orders\templates\orders\create_order.html:92
+msgid "Place order"
+msgstr "Зробити замовлення"
 
 #: .\templates\base.html:30
 msgid "Home"
@@ -76,12 +147,25 @@ msgstr "Пошук"
 msgid "Пошук"
 msgstr "Пошук"
 
-#: .\templates\base.html:98
+#: .\templates\base.html:111
 msgid "Каталог"
 msgstr "Каталог"
 
-#: .\templates\base.html:99
+#: .\templates\base.html:112 .\templates\includes\cart_button.html:9
 msgid "Catalog Icon"
+msgstr ""
+
+#: .\templates\includes\cart_button.html:14
+msgid "Cart modal markup"
+msgstr ""
+
+#: .\templates\includes\cart_button.html:21
+#: .\templates\includes\notifications.html:9
+msgid "Close"
+msgstr ""
+
+#: .\templates\includes\cart_button.html:24
+msgid "Cart"
 msgstr ""
 
 #: .\venv\Lib\site-packages\IPython\core\tests\test_completer.py:420
@@ -1574,9 +1658,6 @@ msgstr ""
 #~ msgid "user"
 #~ msgstr "користувач"
 
-#~ msgid "email address"
-#~ msgstr "e-mail адреса"
-
 #~ msgid "verified"
 #~ msgstr "підтверджено"
 
@@ -1617,9 +1698,6 @@ msgstr ""
 
 #~ msgid "provider ID"
 #~ msgstr "постачальник ID"
-
-#~ msgid "name"
-#~ msgstr "Ім'я"
 
 #~ msgid "client id"
 #~ msgstr "ідентифікатор клієнта"
