@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load goods_tags %}
+{% load i18n %}  <!-- Загрузка тегов перевода -->
 
 {% block modal_cart %}
 {% include 'includes/cart_button.html' %}
@@ -11,15 +12,15 @@
      <link rel="stylesheet" href="{% static 'deps/css/my_footer_css.css' %}">
      <div class="col-lg-10">
 
-        <!-- Контент на странице -->
+        <!-- {% trans 'Content on the page' %} -->
 
         <div class="row">
 
-            <!-- Форма фильтров -->
+            <!-- {% trans 'Filters form' %} -->
 
             <div class="dropdown mb-2">
                 <button class="btn btn-secondary dropdown-toggle btn-dark" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">Фільтри</button>
+                    aria-expanded="false">{% trans 'Filters' %}</button>
 
 
                 <form action="{% if request.GET.q %}{% url "catalog:search" %}{% else %}{% url 'catalog:index' slug_url %}{% endif %}" method="get" class="dropdown-menu bg-dark" data-bs-theme="dark">
@@ -30,51 +31,51 @@
                             <input type="hidden" name="q" value="{{ request.GET.q }}">
                         {% endif %}
                         <label class="form-check-label" for="flexCheckDefault">
-                            Акціонні товари
+                            {% trans 'Promotional items' %}
                         </label>
                     </div>
-                    <p class="text-white mx-3 mt-3">Сортувати:</p>
+                    <p class="text-white mx-3 mt-3">{% trans 'Sort by' %}:</p>
                     <div class="form-check text-white mx-3">
                         <input class="form-check-input" type="radio" name="order_by" id="flexRadioDefault1" value="default"
                         {% if not request.GET.order_by or request.GET.order_by == 'default' %}checked{% endif %}>
-                        <label class="form-check-label" for="flexRadioDefault1">За замовчуванням</label>
+                        <label class="form-check-label" for="flexRadioDefault1">{% trans 'Default' %}</label>
                     </div>
                     <div class="form-check text-white mx-3">
                         <input class="form-check-input" type="radio" name="order_by" id="flexRadioDefault2" value="price"
                             {% if request.GET.order_by == 'price' %}checked{% endif %}>
-                        <label class="form-check-label" for="flexRadioDefault2">Від дешевих до дорогих</label>
+                        <label class="form-check-label" for="flexRadioDefault2">{% trans 'From low to high' %}</label>
                     </div>
                     <div class="form-check text-white mx-3">
                         <input class="form-check-input" type="radio" name="order_by" id="flexRadioDefault3" value="-price"
                               {% if request.GET.order_by == '-price' %}checked{% endif %}>
-                        <label class="form-check-label" for="fle  xRadioDefault3">Від дорогих к дешевим</label>
+                        <label class="form-check-label" for="flexRadioDefault3">{% trans 'From high to low' %}</label>
                     </div>
-                    <button type="submit" class="btn btn-primary mx-3 mt-3">Застосувати</button>
+                    <button type="submit" class="btn btn-primary mx-3 mt-3">{% trans 'Apply' %}</button>
                 </form>
             </div>
 
             {% if request.GET.q %}
-                <h3 class="mt-4">Результати пошуку по запиту "{{ request.GET.q }}"</h3>
+                <h3 class="mt-4">{% trans 'Search results for' %} "{{ request.GET.q }}"</h3>
                 {% if not goods %}
                     <link rel="stylesheet" href="{% static "deps/css/my_footer_css.css" %}">
-                    <h2 class="mt-4">По запиту нічого не знайдено</h2>
+                    <h2 class="mt-4">{% trans 'No results found for the query' %}</h2>
                 {% endif %}
             {% elif request.GET.q is not None and not request.GET.q.strip %}
-                 <h3 class="mt-4">Пошуковий запит відсутній</h3>
+                 <h3 class="mt-4">{% trans 'No search query' %}</h3>
             {% endif %}
 
 
             {% if not goods %}
                 <div class="dropdown mb-2">
-                    <button class="btn btn-secondary dropdown-toggle btn-dark" type="button" disabled >У цій категорії поки немає продуктів</button>
+                    <button class="btn btn-secondary dropdown-toggle btn-dark" type="button" disabled >{% trans 'No products in this category yet' %}</button>
                 </div>
 {#                <div class="alert alert-info mt-4" role="alert">#}
-{#                    У цій категорії поки немає продуктів#}
+{#                    {% trans 'No products in this category yet' %}#}
 {#                </div>#}
-{#                <h2 class="mt-4">У цій категорії поки немає продуктів</h2>#}
+{#                <h2 class="mt-4">{% trans 'No products in this category yet' %}</h2>#}
             {% else %}
                    {% for product in goods %}
-                        <!-- Карта товара -->
+                        <!-- {% trans 'Product card' %} -->
                         <div class="col-lg-4 col-md-6 p-4">
                             <div class="card border-primary rounded custom-shadow">
                                 <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" data-bs-toggle="modal" data-bs-target="#imageModal{{ forloop.counter }}">
@@ -99,72 +100,72 @@
                                         {% endif %}
                                         {% endautoescape %}
                                     </p>
-                                    <p class="product_id">id: {{ product.display_id }}</p>
+                                    <p class="product_id">{% trans 'id' %}: {{ product.display_id }}</p>
                                     <div class="d-flex justify-content-between">
                                         {% if product.discount %}
                                         <p><s>{{ product.price }}</s> ₴</p>
                                         <p><strong>{{ product.sell_price }}₴</strong></p>
-                                        <span class="badge bg-warning text-dark">Знижка {{ product.discount }}%</span>
+                                        <span class="badge bg-warning text-dark">{% trans 'Discount' %} {{ product.discount }}%</span>
                                         {% else %}
                                         <p><strong>{{ product.price }} ₴</strong></p>
                                         {% endif %}
                                         <a href="{% url 'cart:cart_add' %}" class="btn add-to-cart" data-product-id='{{ product.id }}'>
                                             {% csrf_token %}
-                                            <img class="mx-1" src="{% static 'deps/icons/cart-plus.svg' %}" alt="Catalog Icon" width="32" height="32">
+                                            <img class="mx-1" src="{% static 'deps/icons/cart-plus.svg' %}" alt="{% trans 'Catalog Icon' %}" width="32" height="32">
                                         </a>
                                     </div>
                                 </div>
-                                <!-- Модальное окно -->
+                                <!-- {% trans 'Modal window' %} -->
                                 <div class="modal fade" id="imageModal{{ forloop.counter }}" tabindex="-1" aria-labelledby="imageModalLabel{{ forloop.counter }}" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="imageModalLabel{{ forloop.counter }}">{{ product.name }}</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{% trans 'Close' %}"></button>
                                             </div>
                                             <div class="modal-body">
                                                 <div id="carouselImages{{ forloop.counter }}" class="carousel slide" data-bs-ride="carousel">
                                                     <div class="carousel-inner">
                                                         {% if product.image %}
                                                         <div class="carousel-item active">
-                                                            <img src="{{ product.image.url }}" class="d-block w-100" alt="Зображення 1">
+                                                            <img src="{{ product.image.url }}" class="d-block w-100" alt="{% trans 'Image 1' %}">
                                                         </div>
                                                         {% endif %}
                                                         {% if product.image2 %}
                                                         <div class="carousel-item">
-                                                            <img src="{{ product.image2.url }}" class="d-block w-100" alt="Зображення 2">
+                                                            <img src="{{ product.image2.url }}" class="d-block w-100" alt="{% trans 'Image 2' %}">
                                                         </div>
                                                         {% endif %}
                                                         {% if product.image3 %}
                                                         <div class="carousel-item">
-                                                            <img src="{{ product.image3.url }}" class="d-block w-100" alt="Зображення 3">
+                                                            <img src="{{ product.image3.url }}" class="d-block w-100" alt="{% trans 'Image 3' %}">
                                                         </div>
                                                         {% endif %}
                                                         {% if product.image4 %}
                                                         <div class="carousel-item">
-                                                            <img src="{{ product.image4.url }}" class="d-block w-100" alt="Зображення 4">
+                                                            <img src="{{ product.image4.url }}" class="d-block w-100" alt="{% trans 'Image 4' %}">
                                                         </div>
                                                         {% endif %}
                                                         {% if product.image5 %}
                                                         <div class="carousel-item">
-                                                            <img src="{{ product.image5.url }}" class="d-block w-100" alt="Зображення 5">
+                                                            <img src="{{ product.image5.url }}" class="d-block w-100" alt="{% trans 'Image 5' %}">
                                                         </div>
                                                         {% endif %}
                                                     </div>
                                                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselImages{{ forloop.counter }}" data-bs-slide="prev">
                                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                        <span class="visually-hidden">Попереднє</span>
+                                                        <span class="visually-hidden">{% trans 'Previous' %}</span>
                                                     </button>
                                                     <button class="carousel-control-next" type="button" data-bs-target="#carouselImages{{ forloop.counter }}" data-bs-slide="next">
                                                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                        <span class="visually-hidden">Наступне</span>
+                                                        <span class="visually-hidden">{% trans 'Next' %}</span>
                                                     </button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Остальной код карты товара -->
+                                <!-- {% trans 'Rest of the product card' %} -->
                             </div>
                         </div>
                    {% endfor %}
@@ -173,13 +174,13 @@
 
 
         </div>
-        <!-- Пагинация -->
+        <!-- {% trans 'Pagination' %} -->
         {% if goods %}
             <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center my-4">
                 <div class="custom-shadow d-flex">
                     <li class="page-item {% if not goods.has_previous %}disabled{% endif %}">
-                        <a class="page-link" href="{% if goods.has_previous %}?{% change_params page=goods.previous_page_number %}{% else %}#{% endif %}">Назад</a>
+                        <a class="page-link" href="{% if goods.has_previous %}?{% change_params page=goods.previous_page_number %}{% else %}#{% endif %}">{% trans 'Back' %}</a>
                     </li>
 
                     {% for page in goods.paginator.page_range %}
@@ -192,7 +193,7 @@
 
                     <li class="page-item {% if not goods.has_next %}disabled{% endif %}">
                         <a class="page-link" href="
-                        {% if goods.has_next %}?{% change_params page=goods.next_page_number %}{% else %}#{% endif %}">Слідуюча</a>
+                        {% if goods.has_next %}?{% change_params page=goods.next_page_number %}{% else %}#{% endif %}">{% trans 'Next' %}</a>
                     </li>
                 </div>
             </ul>
@@ -201,6 +202,7 @@
         {% endif %}
 
 {% endblock %}
+
 
 {% block footer %}
      <footer class="py-4 bg-dark fixed-bottom" >
